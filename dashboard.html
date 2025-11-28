@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TenancyHub - Admin dashboard for managing tenants, agreements, and payments.">
+    <title>Admin Dashboard - TenancyHub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                🏠 Tenancy<span>Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agreements.html">Agreements</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <span class="user-display" style="display: none; color: var(--orange);"></span>
+                <button class="btn btn-secondary btn-small btn-login" onclick="TenancyHub.openModal('loginModal')">Login</button>
+                <button class="btn btn-primary btn-small btn-register" onclick="TenancyHub.openModal('registerModal')">Register</button>
+                <button class="btn btn-secondary btn-small btn-logout" style="display: none;" onclick="TenancyHub.logout()">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content" id="dashboard-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Admin Dashboard</h1>
+                <p>Manage tenants, agreements, and track payments</p>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-tenants">0</div>
+                    <div class="stat-label">Total Tenants</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="active-agreements">0</div>
+                    <div class="stat-label">Active Agreements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-revenue">$0</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number text-danger" id="overdue-payments">0</div>
+                    <div class="stat-label">Overdue Payments</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Quick Actions</h3>
+                </div>
+                <div class="flex gap-2 flex-wrap" style="margin-top: 1rem;">
+                    <button class="btn btn-primary" onclick="TenancyHub.openModal('addTenantModal')">
+                        ➕ Add Tenant
+                    </button>
+                    <button class="btn btn-secondary" onclick="TenancyHub.openModal('addPropertyModal')">
+                        🏠 Add Property
+                    </button>
+                    <button class="btn btn-secondary" onclick="Dashboard.refreshData()">
+                        🔄 Refresh Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tenants Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>👥 All Tenants</h3>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tenant</th>
+                                <th>Email</th>
+                                <th>Property</th>
+                                <th>Rent</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tenants-table-body">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payments Table with Filters -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>💳 Payment Transactions</h3>
+                </div>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="paid">Paid</button>
+                    <button class="filter-btn" data-filter="due">Due Soon</button>
+                    <button class="filter-btn" data-filter="overdue">Overdue</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tenant Name</th>
+                                <th>Amount Paid</th>
+                                <th>Date of Payment</th>
+                                <th>Next Rent Due</th>
+                                <th>Status</th>
+                                <th>Method</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payments-table-body">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Agreements Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>📄 Agreements Overview</h3>
+                    <a href="agreements.html" class="btn btn-secondary btn-small">View All</a>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tenant</th>
+                                <th>Property</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agreements-table-body">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🏠 TenancyHub</h4>
+                <p>Your trusted platform for managing tenancy agreements online. Simple, transparent, and fully automated.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agreements.html">Agreements</a></li>
+                    <li><a href="payments.html">Payments</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 123 Property Lane, Real Estate City</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                    <li>📧 support@tenancyhub.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TenancyHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Login to TenancyHub</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-type">Account Type</label>
+                    <select id="register-type" name="userType" class="form-control">
+                        <option value="tenant">Tenant</option>
+                        <option value="landlord">Landlord</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Tenant Modal -->
+    <div class="modal-overlay" id="addTenantModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Tenant</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="add-tenant-form">
+                <div class="form-group">
+                    <label for="tenant-name-add">Full Name *</label>
+                    <input type="text" id="tenant-name-add" name="tenantName" class="form-control" placeholder="Enter tenant's full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="tenant-email-add">Email Address *</label>
+                    <input type="email" id="tenant-email-add" name="tenantEmail" class="form-control" placeholder="Enter email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="tenant-phone-add">Phone Number *</label>
+                    <input type="tel" id="tenant-phone-add" name="tenantPhone" class="form-control" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="property-address-add">Property Address *</label>
+                    <input type="text" id="property-address-add" name="propertyAddress" class="form-control" placeholder="Enter property address" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="move-in-date-add">Move-in Date *</label>
+                        <input type="date" id="move-in-date-add" name="moveInDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rent-amount-add">Monthly Rent ($) *</label>
+                        <input type="number" id="rent-amount-add" name="rentAmount" class="form-control" placeholder="Enter rent amount" min="0" step="0.01" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Add Tenant</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Property Modal -->
+    <div class="modal-overlay" id="addPropertyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Property</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="property-upload-form">
+                <div class="form-group">
+                    <label for="property-name">Property Name *</label>
+                    <input type="text" id="property-name" name="propertyName" class="form-control" placeholder="Enter property name" required>
+                </div>
+                <div class="form-group">
+                    <label for="property-address">Property Address *</label>
+                    <input type="text" id="property-address" name="propertyAddress" class="form-control" placeholder="Enter full address" required>
+                </div>
+                <div class="form-group">
+                    <label for="property-type">Property Type *</label>
+                    <select id="property-type" name="propertyType" class="form-control" required>
+                        <option value="">Select type</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                        <option value="condo">Condominium</option>
+                        <option value="studio">Studio</option>
+                        <option value="townhouse">Townhouse</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rent-amount-property">Monthly Rent ($) *</label>
+                    <input type="number" id="rent-amount-property" name="rentAmount" class="form-control" placeholder="Enter monthly rent" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="property-image">Property Image</label>
+                    <input type="file" id="property-image" name="propertyImage" class="form-control" accept="image/*">
+                    <small style="opacity: 0.7;">Upload an image of the property</small>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Add Property</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tenant Details Modal -->
+    <div class="modal-overlay" id="tenantDetailsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Tenant Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div id="tenant-details-content">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Agreement Details Modal -->
+    <div class="modal-overlay" id="agreementDetailsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Agreement Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div id="agreement-details-content">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
