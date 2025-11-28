@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TenancyHub - Your tenant profile with payment history and agreement summary.">
+    <title>My Profile - TenancyHub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                🏠 Tenancy<span>Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agreements.html">Agreements</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <span class="user-display" style="display: none; color: var(--orange);"></span>
+                <button class="btn btn-secondary btn-small btn-login" onclick="TenancyHub.openModal('loginModal')">Login</button>
+                <button class="btn btn-primary btn-small btn-register" onclick="TenancyHub.openModal('registerModal')">Register</button>
+                <button class="btn btn-secondary btn-small btn-logout" style="display: none;" onclick="TenancyHub.logout()">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content" id="profile-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>My Profile</h1>
+                <p>Manage your tenant profile and view your tenancy details</p>
+            </div>
+
+            <div id="profile-container">
+                <!-- Profile Header -->
+                <div class="card">
+                    <div class="profile-header">
+                        <div class="profile-photo-container">
+                            <img src="assets/images/user-placeholder.svg" alt="Profile Photo" class="profile-photo" id="profile-photo">
+                            <button class="photo-upload-btn" id="photo-upload-btn" title="Upload Photo">📷</button>
+                            <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profile-name">Loading...</h2>
+                            <p>📧 <span id="profile-email">Loading...</span></p>
+                            <p>📱 <span id="profile-phone">Loading...</span></p>
+                            <p>🏠 <span id="profile-address">Loading...</span></p>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <button class="btn btn-primary" onclick="Profile.openEditModal()">
+                                ✏️ Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Profile Details</h3>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Move-in Date</label>
+                            <p id="move-in-date">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Rent</label>
+                            <p id="rent-amount">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Agreement Status</label>
+                            <p id="agreement-status">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>⏰ Rent Due Countdown</h3>
+                    </div>
+                    <div id="countdown-container">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Agreement Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📄 Agreement Summary</h3>
+                        <a href="agreements.html" class="btn btn-secondary btn-small">View Full Agreement</a>
+                    </div>
+                    <div id="agreement-summary">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Payment History -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>💳 Payment History</h3>
+                        <a href="payments.html" class="btn btn-secondary btn-small">View All Payments</a>
+                    </div>
+                    <div id="payment-history">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="features-grid" style="margin-top: 1rem;">
+                        <a href="payments.html" class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-decoration: none;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem;">💳</div>
+                            <h4>Make Payment</h4>
+                            <p style="font-size: 0.9rem;">Pay your rent online securely</p>
+                        </a>
+                        <a href="agreements.html" class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-decoration: none;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem;">📄</div>
+                            <h4>View Agreement</h4>
+                            <p style="font-size: 0.9rem;">Review your tenancy agreement</p>
+                        </a>
+                        <a href="contact.html" class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-decoration: none;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem;">📞</div>
+                            <h4>Contact Support</h4>
+                            <p style="font-size: 0.9rem;">Get help from our team</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🏠 TenancyHub</h4>
+                <p>Your trusted platform for managing tenancy agreements online. Simple, transparent, and fully automated.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agreements.html">Agreements</a></li>
+                    <li><a href="payments.html">Payments</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 123 Property Lane, Real Estate City</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                    <li>📧 support@tenancyhub.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TenancyHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Login to TenancyHub</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-type">Account Type</label>
+                    <select id="register-type" name="userType" class="form-control">
+                        <option value="tenant">Tenant</option>
+                        <option value="landlord">Landlord</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="edit-name">Full Name</label>
+                    <input type="text" id="edit-name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email Address</label>
+                    <input type="email" id="edit-email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-phone">Phone Number</label>
+                    <input type="tel" id="edit-phone" name="phone" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/payments.js"></script>
+    <script src="assets/js/profile.js"></script>
+</body>
+</html>

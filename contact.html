@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TenancyHub - Contact us for support and inquiries.">
+    <title>Contact Us - TenancyHub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                🏠 Tenancy<span>Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="agreements.html">Agreements</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <span class="user-display" style="display: none; color: var(--orange);"></span>
+                <button class="btn btn-secondary btn-small btn-login" onclick="TenancyHub.openModal('loginModal')">Login</button>
+                <button class="btn btn-primary btn-small btn-register" onclick="TenancyHub.openModal('registerModal')">Register</button>
+                <button class="btn btn-secondary btn-small btn-logout" style="display: none;" onclick="TenancyHub.logout()">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our support team</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- Contact Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Send us a Message</h3>
+                    </div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name *</label>
+                            <input type="text" id="contact-name" name="name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject *</label>
+                            <select id="contact-subject" name="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="agreement">Agreement Help</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" name="message" class="form-control" placeholder="Write your message here..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem;">📍</div>
+                                <div>
+                                    <h5 class="text-orange mb-1">Address</h5>
+                                    <p style="margin: 0;">123 Property Lane<br>Real Estate City, RC 12345</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem;">📞</div>
+                                <div>
+                                    <h5 class="text-orange mb-1">Phone</h5>
+                                    <p style="margin: 0;">+1 (555) 123-4567<br>Mon-Fri: 9AM - 6PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem;">📧</div>
+                                <div>
+                                    <h5 class="text-orange mb-1">Email</h5>
+                                    <p style="margin: 0;">support@tenancyhub.com<br>info@tenancyhub.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Follow Us</h3>
+                        </div>
+                        <div class="social-links" style="margin-top: 1rem; justify-content: flex-start;">
+                            <a href="#" class="social-link" style="width: 50px; height: 50px; font-size: 1.5rem;">📘</a>
+                            <a href="#" class="social-link" style="width: 50px; height: 50px; font-size: 1.5rem;">🐦</a>
+                            <a href="#" class="social-link" style="width: 50px; height: 50px; font-size: 1.5rem;">📸</a>
+                            <a href="#" class="social-link" style="width: 50px; height: 50px; font-size: 1.5rem;">💼</a>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Office Hours</h3>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="flex justify-between mb-2">
+                                <span>Monday - Friday</span>
+                                <span class="text-orange">9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Saturday</span>
+                                <span class="text-orange">10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sunday</span>
+                                <span class="text-orange">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Frequently Asked Questions</h3>
+                </div>
+                <div class="features-grid" style="margin-top: 1rem;">
+                    <div class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+                        <h4 class="text-orange">How do I create an account?</h4>
+                        <p style="font-size: 0.9rem;">Click the "Register" button in the navigation bar and fill in your details. You can create either a tenant or landlord account.</p>
+                    </div>
+                    <div class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+                        <h4 class="text-orange">How does the payment system work?</h4>
+                        <p style="font-size: 0.9rem;">Our payment system simulates rent payments. When you make a payment, a 1-year countdown starts automatically for your next due date.</p>
+                    </div>
+                    <div class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+                        <h4 class="text-orange">Can I edit my agreement?</h4>
+                        <p style="font-size: 0.9rem;">Once an agreement is submitted, you'll need to contact your landlord to make changes. You can view your current agreement anytime.</p>
+                    </div>
+                    <div class="feature-card" style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+                        <h4 class="text-orange">What happens when my rent is overdue?</h4>
+                        <p style="font-size: 0.9rem;">The countdown timer will turn red and indicate how many days you're overdue. Please make your payment as soon as possible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🏠 TenancyHub</h4>
+                <p>Your trusted platform for managing tenancy agreements online. Simple, transparent, and fully automated.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agreements.html">Agreements</a></li>
+                    <li><a href="payments.html">Payments</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 123 Property Lane, Real Estate City</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                    <li>📧 support@tenancyhub.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TenancyHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Login to TenancyHub</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-type">Account Type</label>
+                    <select id="register-type" name="userType" class="form-control">
+                        <option value="tenant">Tenant</option>
+                        <option value="landlord">Landlord</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        // Contact Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        subject: formData.get('subject'),
+                        message: formData.get('message'),
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Store message locally (simulation)
+                    const messages = JSON.parse(localStorage.getItem('tenancyhub_messages') || '[]');
+                    messages.push(data);
+                    localStorage.setItem('tenancyhub_messages', JSON.stringify(messages));
+
+                    TenancyHub.showNotification('Message sent successfully! We will get back to you soon.', 'success');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

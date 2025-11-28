@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TenancyHub - Manage your tenancy agreements online with simple, transparent, and fully automated rent tracking.">
+    <title>TenancyHub - Tenancy Agreement Management Platform</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                🏠 Tenancy<span>Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="agreements.html">Agreements</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <span class="user-display" style="display: none; color: var(--orange);"></span>
+                <button class="btn btn-secondary btn-small btn-login" onclick="TenancyHub.openModal('loginModal')">Login</button>
+                <button class="btn btn-primary btn-small btn-register" onclick="TenancyHub.openModal('registerModal')">Register</button>
+                <button class="btn btn-secondary btn-small btn-logout" style="display: none;" onclick="TenancyHub.logout()">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Manage Your <span>Tenancy Agreements</span> Online</h1>
+            <p>Simple, transparent, and fully automated rent tracking. Experience hassle-free property management with TenancyHub.</p>
+            <div class="hero-buttons">
+                <a href="profile.html" class="btn btn-primary">Create Profile</a>
+                <a href="agreements.html" class="btn btn-secondary">View Agreements</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Choose TenancyHub?</h2>
+            <p>Everything you need to manage tenancy agreements in one place</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Online Agreement Completion</h3>
+                <p>Complete and sign tenancy agreements digitally. No paperwork, no hassle. Everything is stored securely online.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>Tenant Profiles</h3>
+                <p>Create detailed tenant profiles with personal information, payment history, and agreement summaries all in one place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Automated Rent Countdown</h3>
+                <p>Track exactly when your next rent payment is due with our automated countdown timer. Never miss a payment again.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Payment Tracking</h3>
+                <p>Keep track of all rent payments with detailed transaction history. Know exactly what's paid and what's due.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Admin Dashboard</h3>
+                <p>Landlords get a comprehensive dashboard to manage all tenants, view agreements, and track payment statuses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3>Property Management</h3>
+                <p>Upload and manage property images, details, and assign tenants to properties with ease.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="features" style="background: linear-gradient(180deg, var(--primary-purple) 0%, var(--light-purple) 100%);">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Get started in three simple steps</p>
+        </div>
+        <div class="features-grid" style="max-width: 900px;">
+            <div class="feature-card">
+                <div class="feature-icon">1️⃣</div>
+                <h3>Create Your Profile</h3>
+                <p>Sign up and create your tenant or landlord profile with all your details.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">2️⃣</div>
+                <h3>Complete Agreement</h3>
+                <p>Fill out and submit your tenancy agreement online with all terms and conditions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">3️⃣</div>
+                <h3>Track & Pay</h3>
+                <p>Monitor your rent countdown and make payments online. It's that simple!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="features">
+        <div class="section-title">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of tenants and landlords already using TenancyHub</p>
+        </div>
+        <div class="text-center">
+            <a href="profile.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
+                Create Your Profile Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🏠 TenancyHub</h4>
+                <p>Your trusted platform for managing tenancy agreements online. Simple, transparent, and fully automated.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="agreements.html">Agreements</a></li>
+                    <li><a href="payments.html">Payments</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 123 Property Lane, Real Estate City</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                    <li>📧 support@tenancyhub.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TenancyHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Login to TenancyHub</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <p class="text-center mt-3">
+                    Don't have an account? 
+                    <a href="#" class="text-orange" onclick="TenancyHub.closeModal('loginModal'); TenancyHub.openModal('registerModal');">Register</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-type">Account Type</label>
+                    <select id="register-type" name="userType" class="form-control">
+                        <option value="tenant">Tenant</option>
+                        <option value="landlord">Landlord</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                <p class="text-center mt-3">
+                    Already have an account? 
+                    <a href="#" class="text-orange" onclick="TenancyHub.closeModal('registerModal'); TenancyHub.openModal('loginModal');">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
