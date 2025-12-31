@@ -228,8 +228,33 @@ nav {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920') center/cover no-repeat;
     padding-top: 80px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
 }
 
 .hero::before {
@@ -240,6 +265,28 @@ nav {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, rgba(43, 0, 79, 0.85) 0%, rgba(74, 0, 128, 0.75) 100%);
+    z-index: 1;
+}
+
+/* Slide-in animation from left to right */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    animation: slideInLeft 1.2s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero-content {
